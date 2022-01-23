@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/digital-hometown-frontend/static/css/main.aad9343e.css",
-    "main.js": "/digital-hometown-frontend/static/js/main.82f03fc5.js",
+    "main.js": "/digital-hometown-frontend/static/js/main.93203998.js",
     "static/js/787.86bc411a.chunk.js": "/digital-hometown-frontend/static/js/787.86bc411a.chunk.js",
     "static/media/logo.svg": "/digital-hometown-frontend/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/digital-hometown-frontend/index.html",
     "main.aad9343e.css.map": "/digital-hometown-frontend/static/css/main.aad9343e.css.map",
-    "main.82f03fc5.js.map": "/digital-hometown-frontend/static/js/main.82f03fc5.js.map",
+    "main.93203998.js.map": "/digital-hometown-frontend/static/js/main.93203998.js.map",
     "787.86bc411a.chunk.js.map": "/digital-hometown-frontend/static/js/787.86bc411a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.aad9343e.css",
-    "static/js/main.82f03fc5.js"
+    "static/js/main.93203998.js"
   ]
 }
