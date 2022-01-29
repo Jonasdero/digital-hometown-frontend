@@ -1,18 +1,7 @@
 import React from "react"
 
 import { CloseIcon } from "@chakra-ui/icons"
-import {
-  Box,
-  BoxProps,
-  Button,
-  Flex,
-  FlexProps,
-  Link,
-  MenuIcon,
-  Stack,
-  Text,
-  TextProps,
-} from "@chakra-ui/react"
+import { Box, BoxProps, Button, Flex, FlexProps, Link, MenuIcon, Stack, Text, TextProps } from "@chakra-ui/react"
 
 const Header = (props: FlexProps) => {
   const [isOpen, setIsOpen] = React.useState(false)

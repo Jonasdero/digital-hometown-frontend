@@ -1,10 +1,6 @@
 import React from "react"
 
-import {
-  FaGithub,
-  FaLinkedin,
-  FaTwitter,
-} from "react-icons/fa"
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa"
 
 import { StarIcon } from "@chakra-ui/icons"
 import {

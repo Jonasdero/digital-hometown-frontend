@@ -1,9 +1,6 @@
 import { useState } from "react"
 
-import {
-  FaLock,
-  FaUserAlt,
-} from "react-icons/fa"
+import { FaLock, FaUserAlt } from "react-icons/fa"
 
 import {
   Avatar,
