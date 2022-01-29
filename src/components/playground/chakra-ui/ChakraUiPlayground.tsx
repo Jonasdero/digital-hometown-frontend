@@ -1,22 +1,20 @@
 import React from "react"
 
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa"
-
 import { StarIcon } from "@chakra-ui/icons"
 import {
   Badge,
   Box,
   Button,
-  ButtonGroup,
-  ButtonGroupProps,
+  Center,
   ChakraProvider,
   Container,
   Editable,
   EditableInput,
   EditablePreview,
+  Flex,
+  Grid,
+  GridItem,
   HStack,
-  HTMLChakraProps,
-  IconButton,
   Image,
   Input,
   NumberDecrementStepper,
@@ -26,10 +24,9 @@ import {
   NumberInputStepper,
   PinInput,
   PinInputField,
+  SimpleGrid,
   Spinner,
   Stack,
-  Text,
-  TextProps,
   useToast,
   Wrap,
   WrapItem,
@@ -50,18 +47,18 @@ function AirbnbExample() {
   }
 
   return (
-    <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
+    <Box maxW={"md"} borderWidth="1px" borderRadius="lg">
       <Image src={property.imageUrl} alt={property.imageAlt} />
 
       <Box p="6">
         <Box display="flex" alignItems="baseline">
-          <Badge borderRadius="full" px="2" colorScheme="teal">
+          <Badge borderRadius="full" px="2" letterSpacing="wider">
             New
           </Badge>
           <Box
             color="gray.500"
             fontWeight="semibold"
-            letterSpacing="wide"
+            letterSpacing="wider"
             fontSize="xs"
             textTransform="uppercase"
             ml="2"
@@ -131,7 +128,7 @@ function DifferentInputs() {
       <Input variant="unstyled" placeholder="Unstyled" />
       <Input placeholder="number" type="number" />
       <NumberInput variant="flushed" placeholder="Number">
-        <NumberInputField />
+        <NumberInputField type="number" />
         <NumberInputStepper>
           <NumberIncrementStepper />
           <NumberDecrementStepper />
@@ -180,68 +177,30 @@ function ToastExample() {
   )
 }
 
-export const SocialMediaLinks = (props: ButtonGroupProps) => (
-  <ButtonGroup variant="ghost" {...props}>
-    <IconButton as="a" href="#" aria-label="LinkedIn" icon={<FaLinkedin fontSize="20px" />} />
-    <IconButton as="a" href="#" aria-label="GitHub" icon={<FaGithub fontSize="20px" />} />
-    <IconButton as="a" href="#" aria-label="Twitter" icon={<FaTwitter fontSize="20px" />} />
-  </ButtonGroup>
-)
-
-function Logo(props: HTMLChakraProps<"svg">) {
-  return (
-    <Image
-      width="30px"
-      src="https://camo.githubusercontent.com/ca111d0962771266e006390606428280ade8694ffaff0b0f8e20c46f924da06f/68747470733a2f2f6f70656e636f6c6c6563746976652e636f6d2f6368616b72612d75692f6f7267616e697a6174696f6e2f302f6176617461722e7376673f6176617461724865696768743d313330"
-    />
-  )
-}
-
-export const Copyright = (props: TextProps) => (
-  <Text fontSize="sm" {...props}>
-    &copy; {new Date().getFullYear()} Digital Home. All rights reserved.
-  </Text>
-)
-
-function Footer() {
-  return (
-    <Box as="footer" role="contentinfo" mx="auto" maxW="7xl" py="5" px={{ base: "4", md: "8" }}>
-      <Stack>
-        <Stack direction="row" spacing="4" align="center" justify="space-between">
-          <Logo />
-          <SocialMediaLinks />
-        </Stack>
-        <Copyright alignSelf={{ base: "center", sm: "start" }} />
-      </Stack>
-    </Box>
-  )
-}
-
 function ChakraUiPlayground() {
   return (
-    <ChakraProvider theme={customTheme}>
-      {/* <Header /> */}
-      <Container>
-        <Wrap>
-          <WrapItem>
-            <Box bg="tomato" w="100%" p={4} color="white" minWidth="300px">
-              This is the Box
-            </Box>
-          </WrapItem>
-          <WrapItem>
-            <Button>Button</Button>
-          </WrapItem>
-          <WrapItem>
-            <AirbnbExample />
-          </WrapItem>
-        </Wrap>
-        <EditableText />
-        <DifferentInputs />
-        <DifferentSpinners />
-        <ToastExample />
-      </Container>
-      <Footer />
-    </ChakraProvider>
+    <Box p={3}>
+      Responsive Grid
+      <SimpleGrid minChildWidth="20em" spacing={3}>
+        <Box>
+          <Box bg="tomato" w="100%" p={4} color="white">
+            This is the Box
+          </Box>
+          <Button>Button</Button>
+        </Box>
+
+        <Box>
+          <AirbnbExample />
+        </Box>
+
+        <Box>
+          <EditableText />
+          <DifferentInputs />
+          <DifferentSpinners />
+          <ToastExample />
+        </Box>
+      </SimpleGrid>
+    </Box>
   )
 }
 

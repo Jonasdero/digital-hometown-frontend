@@ -28,20 +28,13 @@ const Login = () => {
   const handleShowClick = () => setShowPassword(!showPassword)
 
   return (
-    <Flex
-      flexDirection="column"
-      width="100wh"
-      height="100vh"
-      backgroundColor="gray.200"
-      justifyContent="center"
-      alignItems="center"
-    >
+    <Flex direction="column" justifyContent="center" alignItems="center">
       <Stack flexDir="column" mb="2" justifyContent="center" alignItems="center">
         <Avatar bg="teal.500" />
         <Heading color="teal.400">Welcome</Heading>
         <Box minW={{ base: "90%", md: "468px" }}>
-          <form>
-            <Stack spacing={4} p="1rem" backgroundColor="whiteAlpha.900" boxShadow="md">
+          <FormControl>
+            <Stack spacing={4} p="1rem" boxShadow="md">
               <FormControl>
                 <InputGroup>
                   <InputLeftElement pointerEvents="none" children={<CFaUserAlt color="gray.300" />} />
@@ -66,7 +59,7 @@ const Login = () => {
                 Login
               </Button>
             </Stack>
-          </form>
+          </FormControl>
         </Box>
       </Stack>
       <Box>
