@@ -1,102 +1,100 @@
-import React from "react"
+import { ReactNode } from "react"
+import {
+  Box,
+  Flex,
+  Avatar,
+  HStack,
+  Link,
+  IconButton,
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+  useDisclosure,
+  useColorModeValue,
+  Stack,
+} from "@chakra-ui/react"
+import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons"
+import { NavLink } from "react-router-dom"
 
-import { CloseIcon } from "@chakra-ui/icons"
-import { Box, BoxProps, Button, Flex, FlexProps, Link, MenuIcon, Stack, Text, TextProps } from "@chakra-ui/react"
+const navLinks = [
+  { name: "Home", url: "/" },
+  { name: "Backend Health", url: "/health" },
+  { name: "Chakra Ui", url: "/chakra-ui" },
+  { name: "Login", url: "/log-in" },
+]
 
-const Header = (props: FlexProps) => {
-  const [isOpen, setIsOpen] = React.useState(false)
+const NavLinkItem = ({ children, url }: { children: ReactNode; url: string }) => (
+  <Link
+    px={2}
+    py={1}
+    as={NavLink}
+    rounded={"md"}
+    _hover={{
+      textDecoration: "none",
+      bg: useColorModeValue("gray.200", "gray.700"),
+    }}
+    to={url}
+  >
+    {children}
+  </Link>
+)
 
-  const toggle = () => setIsOpen(!isOpen)
+function Header() {
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
-    <NavBarContainer {...props}>
-      <Logo w="100px" color={["white", "white", "primary.500", "primary.500"]} />
-      <MenuToggle toggle={toggle} isOpen={isOpen} />
-      <MenuLinks isOpen={isOpen} />
-    </NavBarContainer>
-  )
-}
-
-const MenuToggle = ({ toggle, isOpen }: { toggle: () => void; isOpen: boolean }) => {
-  return (
-    <Box display={{ base: "block", md: "none" }} onClick={toggle}>
-      {isOpen ? <CloseIcon /> : <MenuIcon />}
-    </Box>
-  )
-}
-
-type MenuItemType = TextProps & { children: React.ReactNode; isLast?: boolean; to: string }
-
-const MenuItem = ({ children, isLast, to = "/", ...rest }: MenuItemType) => {
-  return (
-    <Link href={to}>
-      <Text display="block" {...rest}>
-        {children}
-      </Text>
-    </Link>
-  )
-}
-
-const MenuLinks = ({ isOpen }: { isOpen: boolean }) => {
-  return (
-    <Box display={{ base: isOpen ? "block" : "none", md: "block" }} flexBasis={{ base: "100%", md: "auto" }}>
-      <Stack
-        spacing={8}
-        align="center"
-        justify={["center", "space-between", "flex-end", "flex-end"]}
-        direction={["column", "row", "row", "row"]}
-        pt={[4, 4, 0, 0]}
-      >
-        <MenuItem to="/">Home</MenuItem>
-        <MenuItem to="/how">How It works </MenuItem>
-        <MenuItem to="/faetures">Features </MenuItem>
-        <MenuItem to="/pricing">Pricing </MenuItem>
-        <MenuItem to="/signup" isLast>
-          <Button
-            size="sm"
-            rounded="md"
-            color={["primary.500", "primary.500", "white", "white"]}
-            bg={["white", "white", "primary.500", "primary.500"]}
-            _hover={{
-              bg: ["primary.100", "primary.100", "primary.600", "primary.600"],
-            }}
-          >
-            Create Account
+    <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
+      <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+        <IconButton
+          size={"md"}
+          icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+          aria-label={"Open Menu"}
+          display={{ md: "none" }}
+          onClick={isOpen ? onClose : onOpen}
+        />
+        <HStack spacing={8} alignItems={"center"}>
+          <Box>Logo</Box>
+          <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
+            {navLinks.map((link) => (
+              <NavLinkItem key={link.name} url={link.url}>
+                {link.name}
+              </NavLinkItem>
+            ))}
+          </HStack>
+        </HStack>
+        <Flex alignItems={"center"}>
+          <Button variant={"solid"} colorScheme={"teal"} size={"sm"} mr={4} leftIcon={<AddIcon />}>
+            Action
           </Button>
-        </MenuItem>
-      </Stack>
+          <Menu>
+            <MenuButton as={Button} rounded={"full"} variant={"link"} cursor={"pointer"} minW={0}>
+              <Avatar size={"sm"} src={"https://images.unsplash.com/photo-1511367461989-f85a21fda167"} />
+            </MenuButton>
+            <MenuList>
+              <MenuItem>Link 1</MenuItem>
+              <MenuItem>Link 2</MenuItem>
+              <MenuDivider />
+              <MenuItem>Link 3</MenuItem>
+            </MenuList>
+          </Menu>
+        </Flex>
+      </Flex>
+
+      {isOpen ? (
+        <Box pb={4} display={{ md: "none" }}>
+          <Stack as={"nav"} spacing={4}>
+            {navLinks.map((link) => (
+              <NavLinkItem key={link.name} url={link.url}>
+                {link.name}
+              </NavLinkItem>
+            ))}
+          </Stack>
+        </Box>
+      ) : null}
     </Box>
-  )
-}
-
-function Logo(props: BoxProps) {
-  return (
-    <Box {...props}>
-      <Text fontSize="lg" fontWeight="bold">
-        Logo
-      </Text>
-    </Box>
-  )
-}
-
-type NavBarContainerInterface = FlexProps & { children: React.ReactNode | null }
-
-const NavBarContainer = ({ children, ...props }: NavBarContainerInterface) => {
-  return (
-    <Flex
-      as="nav"
-      align="center"
-      justify="space-between"
-      wrap="wrap"
-      w="100%"
-      mb={8}
-      p={8}
-      bg={["primary.500", "primary.500", "transparent", "transparent"]}
-      color={["white", "white", "primary.700", "primary.700"]}
-      {...props}
-    >
-      {children}
-    </Flex>
   )
 }
 
