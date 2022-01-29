@@ -1,10 +1,19 @@
 import "./App.css"
 
 import React from "react"
-import { HashRouter, NavLink, Route, Routes } from "react-router-dom"
 
-import logo from "../logo.svg"
+import {
+  HashRouter,
+  Route,
+  Routes,
+} from "react-router-dom"
+
+import { Link } from "@chakra-ui/react"
+
 import { useBackendHealth } from "../hooks/useBackendHealth"
+import logo from "../logo.svg"
+import ChakraUiPlayground from "./playground/chakra-ui/ChakraUiPlayground"
+import Login from "./playground/chakra-ui/Login"
 
 function ReactStartPage() {
   return (
@@ -36,19 +45,28 @@ function App() {
     <div className="App">
       {/* HashRouter only needed because github pages put the root to github.io/<name> */}
       <HashRouter>
+        {/* <Header /> */}
         <div className="Navbar">
           <ul>
             <li>
-              <NavLink to="/">Home</NavLink>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <NavLink to="/health">Backend Health</NavLink>
+              <Link to="/health">Backend Health</Link>
+            </li>
+            <li>
+              <Link to="/chakra-ui">Chakra Ui</Link>
+            </li>
+            <li>
+              <Link to="/log-in">Login</Link>
             </li>
           </ul>
         </div>
         <Routes>
           <Route path="/" element={<ReactStartPage />} />
           <Route path="/health" element={<BackendHealth />} />
+          <Route path="/chakra-ui" element={<ChakraUiPlayground />} />
+          <Route path="/log-in" element={<Login />} />
         </Routes>
       </HashRouter>
     </div>
