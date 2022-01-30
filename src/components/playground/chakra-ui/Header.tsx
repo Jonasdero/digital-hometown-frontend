@@ -18,6 +18,7 @@ import {
 } from "@chakra-ui/react"
 import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons"
 import { NavLink } from "react-router-dom"
+import LogInOutButton from "../../LogInOutButton"
 
 const navLinks = [
   { name: "Home", url: "/" },
@@ -74,6 +75,8 @@ function Header() {
               <Avatar size={"sm"} src={"https://images.unsplash.com/photo-1511367461989-f85a21fda167"} />
             </MenuButton>
             <MenuList>
+              <LogInOutButton />
+              <MenuDivider />
               <MenuItem>Link 1</MenuItem>
               <MenuItem>Link 2</MenuItem>
               <MenuDivider />

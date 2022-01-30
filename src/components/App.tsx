@@ -4,9 +4,8 @@ import React from "react"
 
 import { HashRouter, Route, Routes } from "react-router-dom"
 
-import { Box, Center, ChakraProvider, Heading, Image, Link, Stack, Text } from "@chakra-ui/react"
+import { Box, Center, ChakraProvider, Heading, Image, Link, Stack } from "@chakra-ui/react"
 
-import { useBackendHealth } from "../hooks/useBackendHealth"
 import logo from "../logo.svg"
 import ChakraUiPlayground from "./playground/chakra-ui/ChakraUiPlayground"
 import Login from "./playground/chakra-ui/Login"
@@ -15,6 +14,7 @@ import Footer from "./playground/chakra-ui/Footer"
 import customTheme from "./playground/chakra-ui/theme"
 import BackendHealth from "./BackendHealth"
 import withAuth from "../hocs/withAuth"
+import LogInOutButton from "./LogInOutButton"
 
 function ReactStartPage() {
   return (
