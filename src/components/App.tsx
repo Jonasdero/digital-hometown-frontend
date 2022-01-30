@@ -13,6 +13,8 @@ import Login from "./playground/chakra-ui/Login"
 import Header from "./playground/chakra-ui/Header"
 import Footer from "./playground/chakra-ui/Footer"
 import customTheme from "./playground/chakra-ui/theme"
+import BackendHealth from "./BackendHealth"
+import withAuth from "../hocs/withAuth"
 
 function ReactStartPage() {
   return (
@@ -27,16 +29,6 @@ function ReactStartPage() {
         <Link href="https://www.google.com">Jonas was here</Link>
         <Link href="https://github.com/bdnkl">Der hier auch</Link>
       </Stack>
-    </Center>
-  )
-}
-
-function BackendHealth() {
-  const { status } = useBackendHealth("LOADING")
-
-  return (
-    <Center boxSize={"100%"}>
-      <Text>Backend status is {status.status}</Text>
     </Center>
   )
 }
@@ -63,4 +55,4 @@ function App() {
   )
 }
 
-export default App
+export default withAuth(App)

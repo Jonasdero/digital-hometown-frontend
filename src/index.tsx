@@ -8,11 +8,15 @@ import { ChakraProvider } from "@chakra-ui/react"
 import App from "./components/App"
 import customTheme from "./components/playground/chakra-ui/theme"
 import reportWebVitals from "./reportWebVitals"
+import { AuthProvider } from "./contexts/AuthContext"
+import { INITIAL_LOGGED_IN_USER } from "./types/User"
 
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider theme={customTheme}>
+    <AuthProvider initialLoggedInUser={undefined}>
       <App />
+    </AuthProvider>
     </ChakraProvider>
   </React.StrictMode>,
   document.getElementById("root"),
